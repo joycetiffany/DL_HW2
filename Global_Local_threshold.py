@@ -9,12 +9,17 @@ ret,th1 = cv2.threshold(img,80,255,cv2.THRESH_BINARY)
 th2 = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_MEAN_C,\
 cv2.THRESH_BINARY,19,-1)
 
+
 titles = ['Original Image', 'Global Thresholding (v = 80)',
-'Adaptive Mean Thresholding', 'Adaptive Gaussian Thresholding']
+'Adaptive Mean Thresholding']
 images = [img, th1, th2]
 
 for i in range(3):
     plt.subplot(2,2,i+1),plt.imshow(images[i],'gray')
     plt.title(titles[i])
     plt.xticks([]),plt.yticks([])
+    if i==1:
+        plt.savefig('Global_threshold.png')
+    if i==2:
+        plt.savefig('Local_threshold.png')
     plt.show()
